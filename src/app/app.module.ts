@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -8,14 +8,18 @@ import { ActiveCarsComponent } from './components/active-cars/active-cars.compon
 import { PassedCarsComponent } from './components/passed-cars/passed-cars.component';
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot([
+      {path: "", component: ActiveCarsComponent},
+      {path: "passed", component: PassedCarsComponent}
+    ])
+  ],
   declarations: [
     AppComponent,
     HeaderComponent,
     ActiveCarsComponent,
-    PassedCarsComponent,],
-  imports: [
-    BrowserModule,
-    NgbModule
+    PassedCarsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
