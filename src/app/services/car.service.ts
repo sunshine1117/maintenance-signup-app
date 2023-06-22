@@ -17,6 +17,14 @@ export class CarService {
   }
 
   addCar(car: Car): void {
-    this.cars.push(car);
+    const newCar: Car = {
+      id: this.cars.length + 1,
+      isPassedCheckup: false,
+      ...car
+    }
+
+    this.cars.push(newCar);
+
+    console.log(this.cars)
   }
 }
