@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-import { CarService } from 'src/app/services/car.service';
+import { SharedService } from 'src/app/common/shared.service';
 import { Car } from 'src/app/types/car';
 
 @Component({
@@ -10,13 +9,13 @@ import { Car } from 'src/app/types/car';
 })
 export class AddCarModalComponent {
   car: Car = {
+    id: 0,
+    isPassedCheckup: false,
     model: "",
     owner: "",
   }
 
-  constructor(private carService: CarService) {}
+  constructor(public sharedService: SharedService) {}
 
-  onAdd() {
-    this.carService.addCar(this.car)
-  }
+  
 }

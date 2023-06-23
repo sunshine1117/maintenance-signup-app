@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Car } from '../types/car';
 import { CARS } from '../cars';
@@ -9,22 +10,26 @@ import { CARS } from '../cars';
 })
 export class CarService {
   cars: Car[] = CARS
-  constructor() { }
+  private carsUrl = 'api/cars';
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  constructor(private http: HttpClient) { }
 
   getCars(): Observable<Car[]> {
    
-    return of(this.cars);
+    return this.http.get<Car[]>(this.carsUrl);
   }
 
-  addCar(car: Car): void {
+  addCar(car: Car): Observable<Car> {
     const newCar: Car = {
-      id: this.cars.length + 1,
+      ...car,
       isPassedCheckup: false,
-      ...car
     }
 
-    this.cars.push(newCar);
-
-    console.log(this.cars)
+    return this.http.post<Car>(this.carsUrl, newCar, this.httpOptions);
   }
 }
+
+

@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let activeCar of activeCars">
+    <tr *ngFor="let activeCar of sharedService.getActiveCars()">
       <td>{{activeCar.model}}</td>
       <td>{{activeCar.owner}}</td>
     </tr>

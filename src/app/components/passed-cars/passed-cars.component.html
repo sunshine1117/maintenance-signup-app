@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let passedCar of passedCars">
+    <tr *ngFor="let passedCar of sharedService.getPassiveCars()">
       <td>{{passedCar.model}}</td>
       <td>{{passedCar.owner}}</td>
     </tr>
