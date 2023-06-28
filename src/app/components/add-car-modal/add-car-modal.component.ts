@@ -17,5 +17,14 @@ export class AddCarModalComponent {
 
   constructor(public sharedService: SharedService) {}
 
-  
+  onAdd() {
+    this.sharedService.addCar(this.car);
+    this.car = {
+      id: 0,
+      isPassedCheckup: false,
+      model: "",
+      owner: "",
+    }
+  }
+
 }
