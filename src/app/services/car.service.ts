@@ -3,7 +3,7 @@ import { Observable, catchError, of, tap, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Car } from '../types/car';
-import { CARS } from '../cars';
+
 
 @Injectable({
   providedIn: 'root'
