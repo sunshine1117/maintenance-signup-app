@@ -3,12 +3,14 @@
 <table class="table table-bordered">
   <thead>
     <tr>
+      <th scope="col">№</th>
       <th scope="col">Модел</th>
       <th scope="col">Владелец</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let activeCar of sharedService.getActiveCars()">
+    <tr *ngFor="let activeCar of sharedService.getActiveCars(); let i = index">
+      <td>{{i + 1}}</td>
       <td>{{activeCar.model}}</td>
       <td>{{activeCar.owner}}</td>
     </tr>
