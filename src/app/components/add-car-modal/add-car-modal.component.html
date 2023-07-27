@@ -11,14 +11,14 @@
         <form>
           <div class="form-group mb-3">
             <label for="carModel" class="mb-2">Car Model</label>
-            <input type="text" class="form-control" name="carModel" id="carModel" placeholder="Toshiba" [(ngModel)]="car.model">
+            <input type="text" class="form-control" name="model" id="model" placeholder="Toshiba" [(ngModel)]="car.model" required #model="ngModel">
           </div>
           <div class="form-group mb-3">
             <label for="carOwner" class="mb-2">Car Owner</label>
-            <input type="text" class="form-control" name="carOwner" id="carOwner" placeholder="Lusiya Kulin" [(ngModel)]="car.owner">
+            <input type="text" class="form-control" name="owner" id="owner" placeholder="Lusiya Kulin" [(ngModel)]="car.owner" required #owner="ngModel">
           </div>
           <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary" (click)="onAdd()">Add new car</button>
+            <button type="submit" class="btn btn-primary" [disabled]="owner.errors?.['required'] || model.errors?.['required']" (click)="onAdd()">Add new car</button>
           </div>
         </form>
       </div>
